@@ -27083,16 +27083,16 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
+var _createMovie = require("./components/CreateMovie");
+var _createMovieDefault = parcelHelpers.interopDefault(_createMovie);
 class App extends (0, _react.Component) {
     constructor(props){
         super(props);
     }
     render() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-            children: "Hello world"
-        }, void 0, false, {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _createMovieDefault.default), {}, void 0, false, {
             fileName: "App.jsx",
-            lineNumber: 11,
+            lineNumber: 12,
             columnNumber: 16
         }, this);
     }
@@ -27104,7 +27104,7 @@ exports.default = App;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/CreateMovie":"bK6TM"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27254,6 +27254,428 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}]},["1xC6H","bdFwH","g9R30"], "g9R30", "parcelRequire10c2")
+},{"react-refresh/runtime":"786KC"}],"bK6TM":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$a0c3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a0c3.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class CreateMovie extends (0, _react.Component) {
+    constructor(props){
+        super(props);
+        this.state = {
+            name: "",
+            rating: "",
+            type: "",
+            rDate: "",
+            status: "",
+            genre: "",
+            mDetails: []
+        };
+    }
+    componentDidMount() {
+        const requestOptions = {
+            method: "GET",
+            header: {
+                "Content-Type": "application/json"
+            }
+        };
+        fetch("http://localhost:3000/movies", requestOptions).then((res)=>{
+            return res.json();
+        }).then((data)=>{
+            this.setState({
+                mDetails: data
+            });
+            console.log(data);
+        });
+    }
+    onChangeName = (e)=>{
+        e.preventDefault();
+        this.setState({
+            name: e.target.value
+        });
+    };
+    onChangeRating = (e)=>{
+        e.preventDefault();
+        this.setState({
+            rating: e.target.value
+        });
+    };
+    onChangeType = (e)=>{
+        e.preventDefault();
+        this.setState({
+            type: e.target.value
+        });
+    };
+    onChangeReleaseDate = (e)=>{
+        e.preventDefault();
+        this.setState({
+            rDate: e.target.value
+        });
+    };
+    onChangeStatus = (e)=>{
+        e.preventDefault();
+        this.setState({
+            status: e.target.value
+        });
+    };
+    onChangeGenre = (e)=>{
+        e.preventDefault();
+        this.setState({
+            genre: e.target.value
+        });
+    };
+    onSubmit = ()=>{
+        const movie = {
+            name: this.state.name,
+            rating: this.state.rating,
+            type: this.state.type,
+            rDate: this.state.rDate,
+            status: this.state.status,
+            genre: this.state.genre
+        };
+        const url = "http://localhost:3000/movies";
+        const options = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+            body: JSON.stringify(movie)
+        };
+        fetch(url, options).then((response)=>{
+            alert("Inserted successfully");
+            console.log(response.status);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    };
+    displayMovies = ()=>{};
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                        onSubmit: this.onSubmit,
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        children: "Enter name of Movie/Tv-series"
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 122,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "text",
+                                        value: this.state.name,
+                                        onChange: this.onChangeName
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 123,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 121,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        children: "Enter rating"
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 126,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "text",
+                                        value: this.state.rating,
+                                        onChange: this.onChangeRating
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 127,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 125,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        children: "Enter Type"
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 130,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "text",
+                                        value: this.state.type,
+                                        onChange: this.onChangeType
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 131,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 129,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        children: "Enter release date"
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 134,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "text",
+                                        value: this.state.rDate,
+                                        onChange: this.onChangeReleaseDate
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 135,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 133,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        children: "Enter watch status"
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 138,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "text",
+                                        value: this.state.status,
+                                        onChange: this.onChangeStatus
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 139,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 137,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                        children: "Enter genre"
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 142,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "text",
+                                        value: this.state.genre,
+                                        onChange: this.onChangeGenre
+                                    }, void 0, false, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 143,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 141,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("cennter", {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    type: "submit",
+                                    value: "submit"
+                                }, void 0, false, {
+                                    fileName: "components/CreateMovie.jsx",
+                                    lineNumber: 145,
+                                    columnNumber: 34
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 145,
+                                columnNumber: 25
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "components/CreateMovie.jsx",
+                        lineNumber: 120,
+                        columnNumber: 21
+                    }, this)
+                }, void 0, false, {
+                    fileName: "components/CreateMovie.jsx",
+                    lineNumber: 119,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Name"
+                                        }, void 0, false, {
+                                            fileName: "components/CreateMovie.jsx",
+                                            lineNumber: 152,
+                                            columnNumber: 33
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Rating"
+                                        }, void 0, false, {
+                                            fileName: "components/CreateMovie.jsx",
+                                            lineNumber: 153,
+                                            columnNumber: 33
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Type"
+                                        }, void 0, false, {
+                                            fileName: "components/CreateMovie.jsx",
+                                            lineNumber: 154,
+                                            columnNumber: 33
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Release Date"
+                                        }, void 0, false, {
+                                            fileName: "components/CreateMovie.jsx",
+                                            lineNumber: 155,
+                                            columnNumber: 33
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Status"
+                                        }, void 0, false, {
+                                            fileName: "components/CreateMovie.jsx",
+                                            lineNumber: 156,
+                                            columnNumber: 33
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Genre"
+                                        }, void 0, false, {
+                                            fileName: "components/CreateMovie.jsx",
+                                            lineNumber: 157,
+                                            columnNumber: 33
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "components/CreateMovie.jsx",
+                                    lineNumber: 151,
+                                    columnNumber: 29
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 150,
+                                columnNumber: 25
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
+                                children: this.state.mDetails.map((data)=>{
+                                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: data.name
+                                            }, void 0, false, {
+                                                fileName: "components/CreateMovie.jsx",
+                                                lineNumber: 165,
+                                                columnNumber: 41
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: data.rating
+                                            }, void 0, false, {
+                                                fileName: "components/CreateMovie.jsx",
+                                                lineNumber: 166,
+                                                columnNumber: 41
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: data.type
+                                            }, void 0, false, {
+                                                fileName: "components/CreateMovie.jsx",
+                                                lineNumber: 167,
+                                                columnNumber: 41
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: data.rDate
+                                            }, void 0, false, {
+                                                fileName: "components/CreateMovie.jsx",
+                                                lineNumber: 168,
+                                                columnNumber: 41
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: data.status
+                                            }, void 0, false, {
+                                                fileName: "components/CreateMovie.jsx",
+                                                lineNumber: 169,
+                                                columnNumber: 41
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: data.genre
+                                            }, void 0, false, {
+                                                fileName: "components/CreateMovie.jsx",
+                                                lineNumber: 170,
+                                                columnNumber: 41
+                                            }, this)
+                                        ]
+                                    }, data._id, true, {
+                                        fileName: "components/CreateMovie.jsx",
+                                        lineNumber: 164,
+                                        columnNumber: 44
+                                    }, this);
+                                })
+                            }, void 0, false, {
+                                fileName: "components/CreateMovie.jsx",
+                                lineNumber: 160,
+                                columnNumber: 25
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "components/CreateMovie.jsx",
+                        lineNumber: 149,
+                        columnNumber: 21
+                    }, this)
+                }, void 0, false, {
+                    fileName: "components/CreateMovie.jsx",
+                    lineNumber: 148,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "components/CreateMovie.jsx",
+            lineNumber: 118,
+            columnNumber: 13
+        }, this);
+    }
+}
+exports.default = CreateMovie;
+
+  $parcel$ReactRefreshHelpers$a0c3.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","bdFwH","g9R30"], "g9R30", "parcelRequire10c2")
 
 //# sourceMappingURL=index.d498c491.js.map
